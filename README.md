@@ -1,1 +1,1 @@
-# test_management_app
+The Test Management App is a web-based platform designed to simplify the process of creating and managing online tests. It provides two separate portals for teachers and students. Through the Teacher Portal, teachers can create, edit, and manage tests with different types of questions. The Student Portal allows students to view the tests assigned by their teachers, attempt them, and submit responses. This application streamlines the interaction between teachers and students, making test management more efficient and organized.
