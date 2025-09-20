@@ -1,0 +1,13 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Result</title>
+    <link rel="stylesheet" href="{% static 'student_result.css' %}">
+</head>
+<body>
+    <h1>Test Result for: {{ test.title }}</h1>
+    <p>You scored <strong>{{ score }}</strong> out of <strong>{{ total }}</strong></p>
+    <a href="{% url 'student_page' %}">Go Back to home page</a>
+</body>
+</html>

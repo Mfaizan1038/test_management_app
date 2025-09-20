@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student page</title>
+  <link rel="stylesheet" href="{% static 'student_page.css' %}">
+
+</head>
+<body>
+  <h3>Tests available:</h3>
+
+  <a href="{% url 'logout' %}" class="logout-link">Logout</a>
+
+<ul>
+  {% for test in tests %}
+  <li>
+    {{ test.title }} - 
+    {% if test.is_public %}
+      <a href="{% url 'view_questions(2)' test.id %}">Start Test</a>
+    {% else %}
+      <a href="{% url 'enter_test_code' test.id %}">Enter Code</a>
+    {% endif %}
+  </li>
+{% endfor %}
+
+</ul>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submitted Answers</title>
+</head>
+<body>
+    <h1>All Student Answers</h1>
+    {% if answers %}
+        <ul>
+        {% for ans in answers %}
+            <li>
+                <strong>Student:</strong> {{ ans.student.username }}<br>
+                <strong>Test:</strong> {{ ans.test.title }}<br>
+                <strong>Description:</strong> {{ ans.test.description }}<br>
+                <strong>Question:</strong> {{ ans.question.text }}<br>
+                <strong>Options:</strong><br>
+                A. {{ ans.question.option_a }}<br>
+                B. {{ ans.question.option_b }}<br>
+                C. {{ ans.question.option_c }}<br>
+                D. {{ ans.question.option_d }}<br>
+                <strong>Submitted Answer:</strong> {{ ans.submitted_answer }}<br>
+                <hr>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No answers submitted yet.</p>
+    {% endif %}
+</body>
+</html>

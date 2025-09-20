@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Questions</title>
+    <link rel="stylesheet" href="{% static 'view_questions(2).css' %}">
+</head>
+<body>
+    <h1>Questions for Test: {{ test.title }}</h1>
+
+    {% if questions %}
+        <form method="post">
+            {% csrf_token %}
+            <ul>
+                {% for question in questions %}
+                    <li>
+                        <strong>Q{{ forloop.counter }}: {{ question.text }}</strong><br>
+                        A. {{ question.option_a }}<br>
+                        B. {{ question.option_b }}<br>
+                        C. {{ question.option_c }}<br>
+                        D. {{ question.option_d }}<br>
+
+                        <label>Give answer (A/B/C/D):</label>
+                        <input type="text" name="answer_{{ question.id }}" required><br><br>
+
+                        <hr>
+                    </li>
+                {% endfor %}
+            </ul>
+            <button type="submit">Submit All Answers</button>
+        </form>
+    {% else %}
+        <p>No questions added yet.</p>
+    {% endif %}
+    
+</body>
+</html> 

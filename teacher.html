@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher page</title>
+  <link rel="stylesheet" href="{% static 'teacher_page.css' %}">
+
+
+</head>
+<body>
+  <h2>Teacher Page</h2>
+
+  <div class="top-links">
+    <a href="{% url 'logout' %}">Logout</a>
+    <a href="{% url 'create_test' %}">Create Test</a>
+  </div>
+
+  <h3>Your Created Tests:</h3>
+  <ul>
+    {% for test in tests %}
+      <li>
+        <a href="{% url 'view_questions' test.id %}">{{ test.title }}</a></span>
+        <div>
+          <a href="{% url 'delete_test' test.id %}">Delete</a> |
+          <a href="{% url 'student_answers' %}">View Submitted Answers</a>
+        </div>
+      </li>
+    {% empty %}
+      <li>No tests created yet.</li>
+    {% endfor %}
+  </ul>
+</body>
+
+</html>

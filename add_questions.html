@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions</title>
+    <link rel="stylesheet" href="{% static 'add_questions.css' %}">
+</head>
+<body>
+    <h2>Add Question to Test</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label> Question Text:</label>
+        <textarea name="text" required></textarea>
+
+        <label>Option A:</label>
+        <input type="text" name="option_a" required>
+
+        <label>Option B:</label>
+        <input type="text" name="option_b" required>
+
+        <label>Option C:</label>
+        <input type="text" name="option_c" required>
+
+        <label>Option D:</label>
+        <input type="text" name="option_d" required>
+
+        <label>Correct Option (A/B/C/D):</label>
+        <input type="text" name="correct_option" maxlength="1">
+
+        <button type="submit">Add Question</button>
+    </form>
+
+    <a href="/add-questions/{{ test.id }}/">Add Another Question</a>
+    <a href="{% url 'view_questions' test.id %}">View Questions</a>
+    <a href="{% url 'teacher_page' %}">← Back to Teacher Page</a>
